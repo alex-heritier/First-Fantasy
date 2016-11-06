@@ -21,17 +21,31 @@ namespace ff {
         State();
         State(sf::RenderWindow &, ResourceManager &, StateStack &);
         virtual ~State();
-        virtual void onEnter(State &);
-        virtual void onExit() = 0;
-        virtual void update(std::vector<sf::Event> &, unsigned long);
+        virtual void onEnterState(State &) final;
+        virtual void onExitState() final;
+        virtual void updateState(std::vector<sf::Event> &, unsigned long) final;
         virtual void display() = 0;
     protected:
-        // variables
-        sf::RenderWindow *mWindow;
-        ResourceManager *mResourceManager;
-        StateStack *mStateStack;
-        State *mParentState;
         // methods
+        virtual sf::RenderWindow &getWindow() const final;
+        virtual ResourceManager &getResourceManager() const final;
+        virtual State &getParent() const final;
+        virtual void swapState(std::string) final;
+        virtual void changeState(std::string) final;
+        virtual void onEnter() = 0;
+        virtual void onExit() = 0;
+        virtual void onKeyPress(sf::Event &) = 0;
+        virtual void update(unsigned long) = 0;
+        virtual unsigned long tick() final;
+        virtual unsigned long time() final;
+    private:
+        // variables
+        sf::RenderWindow *const mWindow;
+        ResourceManager *const mResourceManager;
+        StateStack *const mStateStack;
+        State *mParentState;
+        unsigned long mTick;
+        unsigned long mTime;
     };
 }
 

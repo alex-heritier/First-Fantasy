@@ -16,9 +16,8 @@ namespace ff {
         State(window, resourceManager, stateStack)
     {}
     
-    void IntroState::onEnter(State &parentState)
+    void IntroState::onEnter()
     {
-        mParentState = &parentState;
         log(LogLevel::INFO, "Entering intro state");
         
         mMainTheme.openFromFile(resourcePath() + "golden_sun.wav");
@@ -32,42 +31,36 @@ namespace ff {
         mMainTheme.stop();
     }
     
-    void IntroState::update(std::vector<sf::Event> &eventList, unsigned long tick)
+    void IntroState::onKeyPress(sf::Event &event)
     {
-        for (auto i = eventList.begin(); i != eventList.end(); i++) {
-            sf::Event &event = *i;
-            
-            // Close window : exit
-            if (event.type == sf::Event::Closed) {
-                mWindow->close();
-            }
-            
-            // Escape pressed : exit
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-                mWindow->close();
-            }
-            
+        switch (event.key.code) {
             // Enter button pressed : go to main menu state
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return) {
-                mStateStack->change("main_menu");
-            }
+            case sf::Keyboard::Right:
+                changeState("main_menu");
+                break;
+            default:
+                break;
         }
+    }
+    
+    void IntroState::update(unsigned long delta)
+    {
     }
     
     void IntroState::display()
     {
         // Load a sprite to display
-        sf::Texture &texture = mResourceManager->getTexture("worldMapBG");
+        sf::Texture &texture = getResourceManager().getTexture("worldMapBG");
         sf::Sprite sprite(texture);
         
         // Create a graphical text to display
-        sf::Font &font = mResourceManager->getFont("introFont");
+        sf::Font &font = getResourceManager().getFont("introFont");
         sf::Text text("Intro", font, 50);
         text.setPosition(500, 0);
         text.setColor(sf::Color::Black);
         
         // Update the window
-        mWindow->draw(sprite);
-        mWindow->draw(text);
+        getWindow().draw(sprite);
+        getWindow().draw(text);
     }
 }

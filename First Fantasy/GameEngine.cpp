@@ -17,6 +17,7 @@
 #include "State.hpp"
 #include "StateStack.hpp"
 #include "ResourcePath.hpp"
+#include "Log.hpp"
 
 //////////////////////
 // Helper Functions //
@@ -41,11 +42,14 @@ int calculateFrameSleepTime(sf::Time time, int fps)
 namespace ff {
     
     GameEngine::GameEngine():
-        mWindow(sf::VideoMode(800, 600), "SFML window"),
+        mWindow(sf::VideoMode(800, 600), "First Fantasy"),
         mResourceManager(ResourceManager()),
         mStateStack(StateStack(mWindow, mResourceManager, "splash")),
         FPS(60)
-    {}
+    {
+        mWindow.setIcon(32, 32, mResourceManager.getImage("blackMage").getPixelsPtr());
+        setLogFile(resourcePath() + "log/log.txt");
+    }
     
     //////////////////////
     // Process Input    //
@@ -56,6 +60,14 @@ namespace ff {
         sf::Event event;
         while (mWindow.pollEvent(event))
         {
+            // close window
+            if (event.type == sf::Event::Closed
+                || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
+                log(LogLevel::INFO, "Window being closed from GameEngine.");
+                mWindow.close();
+                return;
+            }
+            
             // add event to eventList
             eventList.push_back(event);
         }
@@ -67,7 +79,7 @@ namespace ff {
     void GameEngine::updateState(std::vector<sf::Event> &eventList, unsigned long tick)
     {
         State &currentState = mStateStack.top();
-        currentState.update(eventList, tick);
+        currentState.updateState(eventList, tick);
     }
     
     //////////////////////
@@ -101,26 +113,24 @@ namespace ff {
     {
         // Start the game loop
         sf::Clock timer;
-        unsigned long lastLoopElapsedTime = 0;
+        sf::Time lastLoopElapsedTime; // time spent during entire last loop (run time + sleep time)
         while (mWindow.isOpen()) {
-            timer.restart();
+            lastLoopElapsedTime = timer.restart();
             
             std::vector<sf::Event> eventList;
             processInput(eventList);
-            updateState(eventList, lastLoopElapsedTime);
+            updateState(eventList, lastLoopElapsedTime.asMicroseconds());
             updateDisplay();
             
             // show fps
-            showFPS(1000 / (1000.0 / 60 + lastLoopElapsedTime / 1000));
+            sf::Time runTime = timer.getElapsedTime(); // current loop's run time (NO sleep time)
+            showFPS(1000 / (1000.0 / 60 + runTime.asMicroseconds() / 1000.0));
             
             // display what was drawn on window
             mWindow.display();
             
             // sleep to pad frame time
-            sf::Time elapsedTime = timer.getElapsedTime();
-            lastLoopElapsedTime = elapsedTime.asMicroseconds();
-            
-            int sleepTime = calculateFrameSleepTime(elapsedTime, FPS);
+            int sleepTime = calculateFrameSleepTime(runTime, FPS);
             std::this_thread::sleep_for(std::chrono::milliseconds(sleepTime));
         }
         

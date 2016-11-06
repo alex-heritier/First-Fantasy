@@ -20,11 +20,13 @@ namespace ff {
         ResourceManager();
         sf::Texture &getTexture(std::string);
         sf::Font &getFont(std::string);
+        sf::Image &getImage(std::string);
         sf::SoundBuffer &getSound(std::string);
     private:
         // variables
         std::unordered_map<std::string, sf::Texture> mTextures;
         std::unordered_map<std::string, sf::Font> mFonts;
+        std::unordered_map<std::string, sf::Image> mImages;
         std::unordered_map<std::string, sf::SoundBuffer> mSounds;
     };
 }

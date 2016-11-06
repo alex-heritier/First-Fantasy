@@ -18,7 +18,7 @@ namespace ff {
     {
     }
     
-    void BlankState::onEnter(State &parentState)
+    void BlankState::onEnter()
     {
         log(LogLevel::INFO, "Entering blank state");
     }
@@ -28,7 +28,11 @@ namespace ff {
         log(LogLevel::INFO, "Exiting blank state");
     }
     
-    void BlankState::update(std::vector<sf::Event> &, unsigned long tick)
+    void BlankState::onKeyPress(sf::Event &event)
+    {
+    }
+    
+    void BlankState::update(unsigned long delta)
     {
     }
     
@@ -37,6 +41,6 @@ namespace ff {
         sf::RectangleShape blackRect(sf::Vector2f(800, 600));
         blackRect.setFillColor(sf::Color::Black);
         
-        mWindow->draw(blackRect);
+        getWindow().draw(blackRect);
     }
 }

@@ -18,6 +18,7 @@ enum class LogLevel {
     ERROR
 };
 
+void setLogFile(std::string);
 void log(LogLevel, std::string);
 
 #endif /* Log_hpp */

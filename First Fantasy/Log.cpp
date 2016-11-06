@@ -14,6 +14,11 @@
 
 static std::ofstream fout;
 
+void setLogFile(std::string filename)
+{
+    fout.open(filename, std::ios::out | std::ios::app);
+}
+
 void log(LogLevel ll, std::string msg)
 {
     time_t rawtime;
@@ -38,5 +43,5 @@ void log(LogLevel ll, std::string msg)
     }
     
     *out << logMsg << std::endl;
-    // write to file
+    fout << logMsg << std::endl;
 }

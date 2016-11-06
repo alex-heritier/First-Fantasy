@@ -19,9 +19,10 @@ namespace ff {
     class MainMenuState : public State {
     public:
         MainMenuState(sf::RenderWindow &, ResourceManager &, StateStack &);
-        void onEnter(State &);
+        void onEnter();
         void onExit();
-        void update(std::vector<sf::Event> &, unsigned long);
+        void onKeyPress(sf::Event &);
+        void update(unsigned long);
         void display();
         
     };

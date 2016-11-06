@@ -16,10 +16,9 @@ namespace ff {
         State(window, resourceManager, stateStack)
     {}
     
-    void WorldMapState::onEnter(State &parentState)
+    void WorldMapState::onEnter()
     {
-        mParentState = &parentState;
-        log(LogLevel::INFO, "Entering main menu state");
+        log(LogLevel::INFO, "Entering world map state");
         
         mBattleMusic.openFromFile(resourcePath() +  "victory.wav");
         mBattleMusic.play();
@@ -27,47 +26,41 @@ namespace ff {
     
     void WorldMapState::onExit()
     {
-        log(LogLevel::INFO, "Exiting main menu state");
+        log(LogLevel::INFO, "Exiting world map state");
         
         mBattleMusic.stop();
     }
     
-    void WorldMapState::update(std::vector<sf::Event> &eventList, unsigned long tick)
+    void WorldMapState::onKeyPress(sf::Event &event)
     {
-        for (auto i = eventList.begin(); i != eventList.end(); i++) {
-            sf::Event &event = *i;
-            
-            // Close window : exit
-            if (event.type == sf::Event::Closed) {
-                mWindow->close();
-            }
-            
-            // Escape pressed : exit
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-                mWindow->close();
-            }
-            
+        switch (event.key.code) {
             // Right arrow pressed : go to main menu state
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Right) {
-                mStateStack->change("splash");
-            }
+            case sf::Keyboard::Right:
+                changeState("splash");
+                break;
+            default:
+                break;
         }
+    }
+    
+    void WorldMapState::update(unsigned long delta)
+    {
     }
     
     void WorldMapState::display()
     {
         // Load a sprite to display
-        sf::Texture &texture = mResourceManager->getTexture("worldMapBG");
+        sf::Texture &texture = getResourceManager().getTexture("worldMapBG");
         sf::Sprite sprite(texture);
         
         // Create a graphical text to display
-        sf::Font &font = mResourceManager->getFont("introFont");
+        sf::Font &font = getResourceManager().getFont("introFont");
         sf::Text text("World Map", font, 50);
         text.setPosition(500, 0);
         text.setColor(sf::Color::Black);
         
         // Update the window
-        mWindow->draw(sprite);
-        mWindow->draw(text);
+        getWindow().draw(sprite);
+        getWindow().draw(text);
     }
 }

@@ -20,13 +20,13 @@ namespace ff {
     class SplashState : public State {
     public:
         SplashState(sf::RenderWindow &, ResourceManager &, StateStack &);
-        void onEnter(State &);
+        void onEnter();
         void onExit();
-        void update(std::vector<sf::Event> &, unsigned long);
+        void onKeyPress(sf::Event &);
+        void update(unsigned long);
         void display();
     private:
         // variables
-        unsigned long mTick;
         unsigned int mSplashHeight;
         sf::Sound mStartupSound;
         // methods

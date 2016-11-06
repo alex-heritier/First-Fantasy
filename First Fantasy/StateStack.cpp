@@ -39,22 +39,23 @@ namespace ff {
     {
         State &oldTop = top();
         State &newTop = getState(stateName);
-        oldTop.onExit();
+        oldTop.onExitState();
         mStack.push(&newTop);
-        newTop.onEnter(oldTop);
+        newTop.onEnterState(oldTop);
     }
     
     void StateStack::swap(std::string stateName)
     {
         if (mStack.size() == 1) {   // only has blank state
-            log(LogLevel::ERROR, "can't swap from the blank state.");
+            log(LogLevel::ERROR, "Cannot swap from the blank state.");
+            return;
         }
         State &oldTop = top();
         State &newTop = getState(stateName);
-        oldTop.onExit();
+        oldTop.onExitState();
         mStack.pop();
         mStack.push(&newTop);
-        newTop.onEnter(top());
+        newTop.onEnterState(top());
     }
     
     ff::State &StateStack::top()

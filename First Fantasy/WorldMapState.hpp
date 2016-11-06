@@ -19,9 +19,10 @@ namespace ff {
     class WorldMapState : public State {
     public:
         WorldMapState(sf::RenderWindow &, ResourceManager &, StateStack &);
-        void onEnter(State &);
+        void onEnter();
         void onExit();
-        void update(std::vector<sf::Event> &, unsigned long);
+        void onKeyPress(sf::Event &);
+        void update(unsigned long);
         void display();
     private:
         // variables

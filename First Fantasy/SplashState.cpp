@@ -17,16 +17,14 @@
 namespace ff {
     
     SplashState::SplashState(sf::RenderWindow &window, ResourceManager &resourceManager, StateStack &stateStack):
-        State(window, resourceManager, stateStack),
-        mTick(0)
+    State(window, resourceManager, stateStack)
     {}
     
-    void SplashState::onEnter(State &parentState)
+    void SplashState::onEnter()
     {
-        mParentState = &parentState;
         log(LogLevel::INFO, "Entering splash state");
         
-        mStartupSound.setBuffer(mResourceManager->getSound("splashSound"));
+        mStartupSound.setBuffer(getResourceManager().getSound("splashSound"));
         mStartupSound.play();
     }
     
@@ -34,44 +32,31 @@ namespace ff {
     {
         log(LogLevel::INFO, "Exiting splash state");
         
-        mTick = 0;
         mSplashHeight = 0;
         mStartupSound.stop();
         mStartupSound.resetBuffer();
     }
     
-    void SplashState::update(std::vector<sf::Event> &eventList, unsigned long tick)
+    void SplashState::onKeyPress(sf::Event &event)
     {
-        // respond to input
-        for (auto i = eventList.begin(); i != eventList.end(); i++) {
-            sf::Event &event = *i;
-            
-            // Close window : exit
-            if (event.type == sf::Event::Closed) {
-                mWindow->close();
-            }
-            
-            // Escape pressed : exit
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-                mWindow->close();
-            }
-            
-            if (event.type == sf::Event::KeyPressed) {
-                // Enter or X buttons pressed : go to intro animation
-                if (event.key.code == sf::Keyboard::Return
-                    || event.key.code == sf::Keyboard::X) {
-                    mStateStack->swap("intro");
-                    return;
-                }
-            }
+        switch (event.key.code) {
+            // Enter or X buttons pressed : go to intro animation
+            case sf::Keyboard::Escape:
+            case sf::Keyboard::X:
+                swapState("intro");
+                break;
+            default:
+                break;
         }
-        
+    }
+    
+    void SplashState::update(unsigned long delta)
+    {
         // set splash height
-        mTick++;
-        mSplashHeight = (mTick * 4) > 250 ? 250 : mTick * 4;
+        mSplashHeight = (tick() * 4) > 250 ? 250 : (unsigned int)(tick() * 4);
         
-        if (mTick > 200)
-            mStateStack->swap("intro");
+        if (time() > sf::milliseconds(3000).asMicroseconds())
+            swapState("intro");
     }
     
     void SplashState::display()
@@ -81,13 +66,13 @@ namespace ff {
         clearRect.setFillColor(sf::Color::White);
         
         // Load a sprite to display
-        sf::Texture &texture = mResourceManager->getTexture("splashImg");
+        sf::Texture &texture = getResourceManager().getTexture("splashImg");
         sf::Sprite sprite(texture);
         
         sprite.setPosition(150, mSplashHeight);
         
         // Update the window
-        mWindow->draw(clearRect);
-        mWindow->draw(sprite);
+        getWindow().draw(clearRect);
+        getWindow().draw(sprite);
     }
 }

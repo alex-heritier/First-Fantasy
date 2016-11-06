@@ -32,6 +32,10 @@ namespace ff {
         mFonts["introFont"] = sf::Font();
         mFonts["introFont"].loadFromFile(resourcePath() + "sansation.ttf");
         
+        // load images
+        mImages["blackMage"] = sf::Image();
+        mImages["blackMage"].loadFromFile(resourcePath() + "black_mage.png");
+        
         // load sounds
         mSounds["splashSound"] = sf::SoundBuffer();
         mSounds["splashSound"].loadFromFile(resourcePath() + "gameboy_start_up.wav");
@@ -51,6 +55,11 @@ namespace ff {
     sf::Font &ResourceManager::getFont(std::string key)
     {
         return mFonts[key];
+    }
+    
+    sf::Image &ResourceManager::getImage(std::string key)
+    {
+        return mImages[key];
     }
     
     sf::SoundBuffer &ResourceManager::getSound(std::string key)
