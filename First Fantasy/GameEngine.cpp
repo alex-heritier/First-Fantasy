@@ -18,6 +18,7 @@
 #include "StateStack.hpp"
 #include "ResourcePath.hpp"
 #include "Log.hpp"
+#include "KeyboardManager.hpp"
 
 //////////////////////
 // Helper Functions //
@@ -42,13 +43,13 @@ int calculateFrameSleepTime(sf::Time time, int fps)
 namespace ff {
     
     GameEngine::GameEngine():
-        mWindow(sf::VideoMode(800, 600), "First Fantasy"),
-        mResourceManager(ResourceManager()),
-        mStateStack(StateStack(mWindow, mResourceManager, "splash")),
-        FPS(60)
+    mWindow(sf::VideoMode(800, 600), "First Fantasy"),
+    mResourceManager(ResourceManager()),
+    mStateStack(StateStack(mWindow, mResourceManager, "splash")),
+    FPS(60)
     {
         mWindow.setIcon(32, 32, mResourceManager.getImage("blackMage").getPixelsPtr());
-        setLogFile(resourcePath() + "log/log.txt");
+        Logger::setLogFile(resourcePath() + "log/log.txt");
     }
     
     //////////////////////
@@ -63,7 +64,7 @@ namespace ff {
             // close window
             if (event.type == sf::Event::Closed
                 || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
-                log(LogLevel::INFO, "Window being closed from GameEngine.");
+                Logger(LogType::INFO).put("Window being closed from GameEngine.");
                 mWindow.close();
                 return;
             }
@@ -116,6 +117,8 @@ namespace ff {
         sf::Time lastLoopElapsedTime; // time spent during entire last loop (run time + sleep time)
         while (mWindow.isOpen()) {
             lastLoopElapsedTime = timer.restart();
+            
+            KeyboardManager::update();
             
             std::vector<sf::Event> eventList;
             processInput(eventList);

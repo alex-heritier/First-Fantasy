@@ -9,6 +9,7 @@
 #include "WorldMapState.hpp"
 #include "ResourcePath.hpp"
 #include "Log.hpp"
+#include "KeyboardManager.hpp"
 
 namespace ff {
     
@@ -18,7 +19,7 @@ namespace ff {
     
     void WorldMapState::onEnter()
     {
-        log(LogLevel::INFO, "Entering world map state");
+        Logger(LogType::INFO).put("Entering world map state");
         
         mBattleMusic.openFromFile(resourcePath() +  "victory.wav");
         mBattleMusic.play();
@@ -26,25 +27,17 @@ namespace ff {
     
     void WorldMapState::onExit()
     {
-        log(LogLevel::INFO, "Exiting world map state");
+        Logger(LogType::INFO).put("Exiting world map state");
         
         mBattleMusic.stop();
     }
     
-    void WorldMapState::onKeyPress(sf::Event &event)
-    {
-        switch (event.key.code) {
-            // Right arrow pressed : go to main menu state
-            case sf::Keyboard::Right:
-                changeState("splash");
-                break;
-            default:
-                break;
-        }
-    }
-    
     void WorldMapState::update(unsigned long delta)
     {
+        if (KeyboardManager::isKeyTapped(sf::Keyboard::Right)) {
+            swapState("splash");
+            return;
+        }
     }
     
     void WorldMapState::display()

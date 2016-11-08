@@ -28,6 +28,9 @@ namespace ff {
         mTextures["worldMapBG"] = sf::Texture();
         mTextures["worldMapBG"].loadFromFile(resourcePath() + "world_map.jpg");
         
+        mTextures["FFSpriteSheet"] = sf::Texture();
+        mTextures["FFSpriteSheet"].loadFromFile(resourcePath() + "ff_sprite_sheet.png");
+        
         // load fonts
         mFonts["introFont"] = sf::Font();
         mFonts["introFont"].loadFromFile(resourcePath() + "sansation.ttf");

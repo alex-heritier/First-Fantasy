@@ -21,12 +21,14 @@ namespace ff {
         IntroState(sf::RenderWindow &, ResourceManager &, StateStack &);
         void onEnter();
         void onExit();
-        void onKeyPress(sf::Event &);
         void update(unsigned long);
         void display();
     private:
         // variables
         sf::Music mMainTheme;
+        sf::Sprite mSprite;
+        int mX;
+        int mY;
     };
 }
 

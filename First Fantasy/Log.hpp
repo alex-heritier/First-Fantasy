@@ -11,14 +11,23 @@
 
 #include <iostream>
 
-enum class LogLevel {
+enum class LogType {
     DBG,
     INFO,
     WARN,
     ERROR
 };
 
-void setLogFile(std::string);
-void log(LogLevel, std::string);
+class Logger {
+public:
+    Logger(LogType);
+    void put(std::string);
+    static void setLogFile(std::string);
+protected:
+    Logger();
+    void _log(std::ostream &, std::string &, bool);
+    static std::ofstream fout;
+    LogType logType;
+};
 
 #endif /* Log_hpp */

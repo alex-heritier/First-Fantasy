@@ -32,20 +32,21 @@ namespace ff {
         virtual State &getParent() const final;
         virtual void swapState(std::string) final;
         virtual void changeState(std::string) final;
-        virtual void onEnter() = 0;
-        virtual void onExit() = 0;
-        virtual void onKeyPress(sf::Event &) = 0;
-        virtual void update(unsigned long) = 0;
         virtual unsigned long tick() final;
         virtual unsigned long time() final;
+        virtual void onEnter() = 0;
+        virtual void onExit() = 0;
+        virtual void onKeyPress(sf::Event &);
+        virtual void onKeyRelease(sf::Event &);
+        virtual void update(unsigned long) = 0;
     private:
         // variables
         sf::RenderWindow *const mWindow;
         ResourceManager *const mResourceManager;
         StateStack *const mStateStack;
         State *mParentState;
-        unsigned long mTick;
-        unsigned long mTime;
+        unsigned long mTick;    // incremented by 1 every update
+        unsigned long mTime;    // incremented by delta every update
     };
 }
 

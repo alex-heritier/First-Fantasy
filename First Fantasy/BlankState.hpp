@@ -23,7 +23,6 @@ namespace ff {
         BlankState(sf::RenderWindow &, ResourceManager &, StateStack &);
         void onEnter();
         void onExit();
-        void onKeyPress(sf::Event &);
         void update(unsigned long);
         void display();
     };

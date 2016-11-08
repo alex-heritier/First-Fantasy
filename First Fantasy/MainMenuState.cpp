@@ -8,6 +8,7 @@
 
 #include "MainMenuState.hpp"
 #include "Log.hpp"
+#include "KeyboardManager.hpp"
 
 namespace ff {
     
@@ -17,27 +18,20 @@ namespace ff {
     
     void MainMenuState::onEnter()
     {
-        log(LogLevel::INFO, "Entering main menu state");
+        Logger(LogType::INFO).put("Entering main menu state");
     }
     
     void MainMenuState::onExit()
     {
-        log(LogLevel::INFO, "Exiting main menu state");
-    }
-    
-    void MainMenuState::onKeyPress(sf::Event &event)
-    {
-        switch (event.key.code) {
-            case sf::Keyboard::Right:
-                changeState("world_map");
-                break;
-            default:
-                break;
-        }
+        Logger(LogType::INFO).put("Exiting main menu state");
     }
     
     void MainMenuState::update(unsigned long delta)
     {
+        if (KeyboardManager::isKeyTapped(sf::Keyboard::Return)) {
+            swapState("world_map");
+            return;
+        }
     }
     
     void MainMenuState::display()

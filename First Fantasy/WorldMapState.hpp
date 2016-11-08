@@ -21,7 +21,6 @@ namespace ff {
         WorldMapState(sf::RenderWindow &, ResourceManager &, StateStack &);
         void onEnter();
         void onExit();
-        void onKeyPress(sf::Event &);
         void update(unsigned long);
         void display();
     private:

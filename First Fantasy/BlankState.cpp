@@ -18,23 +18,10 @@ namespace ff {
     {
     }
     
-    void BlankState::onEnter()
-    {
-        log(LogLevel::INFO, "Entering blank state");
-    }
+    void BlankState::onEnter() { Logger(LogType::INFO).put("Entering blank state"); }
+    void BlankState::onExit() { Logger(LogType::INFO).put("Exiting blank state"); }
     
-    void BlankState::onExit()
-    {
-        log(LogLevel::INFO, "Exiting blank state");
-    }
-    
-    void BlankState::onKeyPress(sf::Event &event)
-    {
-    }
-    
-    void BlankState::update(unsigned long delta)
-    {
-    }
+    void BlankState::update(unsigned long delta) {}
     
     void BlankState::display()
     {

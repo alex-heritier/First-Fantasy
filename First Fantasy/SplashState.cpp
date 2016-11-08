@@ -13,6 +13,7 @@
 #include "SplashState.hpp"
 #include "State.hpp"
 #include "Log.hpp"
+#include "KeyboardManager.hpp"
 
 namespace ff {
     
@@ -22,7 +23,7 @@ namespace ff {
     
     void SplashState::onEnter()
     {
-        log(LogLevel::INFO, "Entering splash state");
+        Logger(LogType::INFO).put("Entering splash state");
         
         mStartupSound.setBuffer(getResourceManager().getSound("splashSound"));
         mStartupSound.play();
@@ -30,33 +31,25 @@ namespace ff {
     
     void SplashState::onExit()
     {
-        log(LogLevel::INFO, "Exiting splash state");
+        Logger(LogType::INFO).put("Exiting splash state");
         
         mSplashHeight = 0;
         mStartupSound.stop();
         mStartupSound.resetBuffer();
     }
     
-    void SplashState::onKeyPress(sf::Event &event)
-    {
-        switch (event.key.code) {
-            // Enter or X buttons pressed : go to intro animation
-            case sf::Keyboard::Escape:
-            case sf::Keyboard::X:
-                swapState("intro");
-                break;
-            default:
-                break;
-        }
-    }
-    
     void SplashState::update(unsigned long delta)
     {
-        // set splash height
-        mSplashHeight = (tick() * 4) > 250 ? 250 : (unsigned int)(tick() * 4);
+        if (KeyboardManager::isKeyTapped(sf::Keyboard::Return)) {
+            swapState("intro");
+            return;
+        }
         
         if (time() > sf::milliseconds(3000).asMicroseconds())
             swapState("intro");
+        
+        // set splash height
+        mSplashHeight = (tick() * 4) > 250 ? 250 : (unsigned int)(tick() * 4);
     }
     
     void SplashState::display()

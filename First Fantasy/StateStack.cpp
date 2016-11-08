@@ -35,19 +35,21 @@ namespace ff {
         change(firstState);
     }
     
+    // push a new state onto the stack
     void StateStack::change(std::string stateName)
     {
         State &oldTop = top();
         State &newTop = getState(stateName);
-        oldTop.onExitState();
+        //oldTop.onExitState();
         mStack.push(&newTop);
         newTop.onEnterState(oldTop);
     }
     
+    // replace the top state with a new state
     void StateStack::swap(std::string stateName)
     {
         if (mStack.size() == 1) {   // only has blank state
-            log(LogLevel::ERROR, "Cannot swap from the blank state.");
+            Logger(LogType::ERROR).put("Cannot swap from the blank state.");
             return;
         }
         State &oldTop = top();
@@ -58,11 +60,25 @@ namespace ff {
         newTop.onEnterState(top());
     }
     
+    // pops top state off of stack
+    void StateStack::end()
+    {
+        if (mStack.size() == 1) {   // only has blank state
+            Logger(LogType::ERROR).put("Cannot end the blank state.");
+            return;
+        }
+        State &oldTop = top();
+        oldTop.onExitState();
+        mStack.pop();
+    }
+    
+    // return top state from the stack
     ff::State &StateStack::top()
     {
         return *mStack.top();
     }
     
+    // get a state from the state map
     ff::State &StateStack::getState(std::string stateName)
     {
         return *mStates[stateName];

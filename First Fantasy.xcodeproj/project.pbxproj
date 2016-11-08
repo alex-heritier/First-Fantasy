@@ -10,6 +10,11 @@
 		FA26F8601DA9C712001EAB75 /* SplashState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA26F85E1DA9C712001EAB75 /* SplashState.cpp */; };
 		FA280E511DCDDFF600DBCF90 /* golden_sun.wav in Resources */ = {isa = PBXBuildFile; fileRef = FA280E501DCDDFF600DBCF90 /* golden_sun.wav */; };
 		FA280E5D1DCEB10500DBCF90 /* black_mage.png in Resources */ = {isa = PBXBuildFile; fileRef = FA280E5C1DCEB10500DBCF90 /* black_mage.png */; };
+		FA280E621DD1728700DBCF90 /* ff_sprite_sheet.png in Resources */ = {isa = PBXBuildFile; fileRef = FA280E5E1DD1728700DBCF90 /* ff_sprite_sheet.png */; };
+		FA280E631DD1728700DBCF90 /* map_tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = FA280E5F1DD1728700DBCF90 /* map_tiles.png */; };
+		FA280E641DD1728700DBCF90 /* skeletons.png in Resources */ = {isa = PBXBuildFile; fileRef = FA280E601DD1728700DBCF90 /* skeletons.png */; };
+		FA280E651DD1728700DBCF90 /* zelda sprites.png in Resources */ = {isa = PBXBuildFile; fileRef = FA280E611DD1728700DBCF90 /* zelda sprites.png */; };
+		FA280E681DD18B6B00DBCF90 /* KeyboardManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA280E661DD18B6B00DBCF90 /* KeyboardManager.cpp */; };
 		FA6AF5081DCBFFF500E258AD /* IntroState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA6AF5061DCBFFF500E258AD /* IntroState.cpp */; };
 		FA6AF50F1DCC13CF00E258AD /* gameboy_start_up.wav in Resources */ = {isa = PBXBuildFile; fileRef = FA6AF50D1DCC13CF00E258AD /* gameboy_start_up.wav */; };
 		FA6AF5101DCC13CF00E258AD /* victory.wav in Resources */ = {isa = PBXBuildFile; fileRef = FA6AF50E1DCC13CF00E258AD /* victory.wav */; };
@@ -37,6 +42,12 @@
 		FA26F85F1DA9C712001EAB75 /* SplashState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SplashState.hpp; sourceTree = "<group>"; };
 		FA280E501DCDDFF600DBCF90 /* golden_sun.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = golden_sun.wav; sourceTree = "<group>"; };
 		FA280E5C1DCEB10500DBCF90 /* black_mage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black_mage.png; sourceTree = "<group>"; };
+		FA280E5E1DD1728700DBCF90 /* ff_sprite_sheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ff_sprite_sheet.png; sourceTree = "<group>"; };
+		FA280E5F1DD1728700DBCF90 /* map_tiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_tiles.png; sourceTree = "<group>"; };
+		FA280E601DD1728700DBCF90 /* skeletons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skeletons.png; sourceTree = "<group>"; };
+		FA280E611DD1728700DBCF90 /* zelda sprites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zelda sprites.png"; sourceTree = "<group>"; };
+		FA280E661DD18B6B00DBCF90 /* KeyboardManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardManager.cpp; sourceTree = "<group>"; };
+		FA280E671DD18B6B00DBCF90 /* KeyboardManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KeyboardManager.hpp; sourceTree = "<group>"; };
 		FA6AF5061DCBFFF500E258AD /* IntroState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IntroState.cpp; sourceTree = "<group>"; };
 		FA6AF5071DCBFFF500E258AD /* IntroState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IntroState.hpp; sourceTree = "<group>"; };
 		FA6AF50D1DCC13CF00E258AD /* gameboy_start_up.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameboy_start_up.wav; sourceTree = "<group>"; };
@@ -85,12 +96,12 @@
 		FA6AF5111DCC8CF900E258AD /* States */ = {
 			isa = PBXGroup;
 			children = (
-				FA6AF5061DCBFFF500E258AD /* IntroState.cpp */,
-				FA6AF5071DCBFFF500E258AD /* IntroState.hpp */,
 				FAEFEBEB1DCA9C0F002A99CC /* WorldMapState.cpp */,
 				FAEFEBEC1DCA9C0F002A99CC /* WorldMapState.hpp */,
 				FAEFEBE81DCA9B29002A99CC /* MainMenuState.cpp */,
 				FAEFEBE91DCA9B29002A99CC /* MainMenuState.hpp */,
+				FA6AF5061DCBFFF500E258AD /* IntroState.cpp */,
+				FA6AF5071DCBFFF500E258AD /* IntroState.hpp */,
 				FA26F85E1DA9C712001EAB75 /* SplashState.cpp */,
 				FA26F85F1DA9C712001EAB75 /* SplashState.hpp */,
 				FAEFEBF01DCABF64002A99CC /* BlankState.cpp */,
@@ -136,6 +147,8 @@
 				FA6AF5111DCC8CF900E258AD /* States */,
 				FABB3B5F1DA88D89009E1CFF /* StateStack.cpp */,
 				FABB3B601DA88D89009E1CFF /* StateStack.hpp */,
+				FA280E661DD18B6B00DBCF90 /* KeyboardManager.cpp */,
+				FA280E671DD18B6B00DBCF90 /* KeyboardManager.hpp */,
 				FABB3B5C1DA880BF009E1CFF /* ResourceManager.cpp */,
 				FABB3B5D1DA880BF009E1CFF /* ResourceManager.hpp */,
 				FABB3B561DA861A4009E1CFF /* GameEngine.cpp */,
@@ -159,6 +172,10 @@
 			children = (
 				FAEFEBF51DCAC43A002A99CC /* main_menu.jpg */,
 				FA6AF50D1DCC13CF00E258AD /* gameboy_start_up.wav */,
+				FA280E5E1DD1728700DBCF90 /* ff_sprite_sheet.png */,
+				FA280E5F1DD1728700DBCF90 /* map_tiles.png */,
+				FA280E601DD1728700DBCF90 /* skeletons.png */,
+				FA280E611DD1728700DBCF90 /* zelda sprites.png */,
 				FA280E501DCDDFF600DBCF90 /* golden_sun.wav */,
 				FA280E5C1DCEB10500DBCF90 /* black_mage.png */,
 				FA6AF50E1DCC13CF00E258AD /* victory.wav */,
@@ -229,10 +246,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA280E641DD1728700DBCF90 /* skeletons.png in Resources */,
+				FA280E621DD1728700DBCF90 /* ff_sprite_sheet.png in Resources */,
 				FA90C5471DA0C72A00096236 /* icon.png in Resources */,
 				FA6AF5101DCC13CF00E258AD /* victory.wav in Resources */,
 				FAEFEBF81DCAC43A002A99CC /* world_map.jpg in Resources */,
 				FAEFEBF71DCAC43A002A99CC /* main_menu.jpg in Resources */,
+				FA280E651DD1728700DBCF90 /* zelda sprites.png in Resources */,
 				FA90C5451DA0C72A00096236 /* sansation.ttf in Resources */,
 				FA90C5431DA0C72A00096236 /* nice_music.ogg in Resources */,
 				FA90C5411DA0C72A00096236 /* cute_image.jpg in Resources */,
@@ -240,6 +260,7 @@
 				FA280E511DCDDFF600DBCF90 /* golden_sun.wav in Resources */,
 				FA6AF50F1DCC13CF00E258AD /* gameboy_start_up.wav in Resources */,
 				FA280E5D1DCEB10500DBCF90 /* black_mage.png in Resources */,
+				FA280E631DD1728700DBCF90 /* map_tiles.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +297,7 @@
 				FAEFEBED1DCA9C0F002A99CC /* WorldMapState.cpp in Sources */,
 				FA6AF5081DCBFFF500E258AD /* IntroState.cpp in Sources */,
 				FA90C53E1DA0C72A00096236 /* main.cpp in Sources */,
+				FA280E681DD18B6B00DBCF90 /* KeyboardManager.cpp in Sources */,
 				FABB3B611DA88D89009E1CFF /* StateStack.cpp in Sources */,
 				FA90C53B1DA0C72A00096236 /* ResourcePath.mm in Sources */,
 			);
