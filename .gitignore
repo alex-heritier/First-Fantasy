@@ -1,0 +1,6 @@
+*.png
+*.jpg
+*.wav
+*.mp3
+*.xcodeproj
+build/*
