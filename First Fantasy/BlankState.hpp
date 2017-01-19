@@ -21,8 +21,8 @@ namespace ff {
     class BlankState : public State {
     public:
         BlankState(sf::RenderWindow &, ResourceManager &, StateStack &);
-        void onEnter();
-        void onExit();
+        void onEnter(void *, std::string = "");
+        void onExit(std::string = "");
         void update(unsigned long);
         void display();
     };

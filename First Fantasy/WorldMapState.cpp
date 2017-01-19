@@ -17,7 +17,7 @@ namespace ff {
         State(window, resourceManager, stateStack)
     {}
     
-    void WorldMapState::onEnter()
+    void WorldMapState::onEnter(void *data)
     {
         Logger(LogType::INFO).put("Entering world map state");
         

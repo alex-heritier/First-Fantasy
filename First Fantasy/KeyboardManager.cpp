@@ -67,11 +67,13 @@ void KeyboardManager::update()
     for (int i = 0; i < _keyCount; i++) {
         const sf::Keyboard::Key &key = _keys[i];
         if (sf::Keyboard::isKeyPressed(key)) {  // key is pressed
-            if (listHas(mTappedKeys, key)) { // if key was a tap
+            if (listHas(mTappedKeys, key)) {
+                // if key was a tap
                 mTappedKeys.remove(key);    // no longer a tap
-                mPressedKeys.push_back(key);    // is now a press
-            } else if (!listHas(mPressedKeys, key)) {   // if key not a press
+            } else if (!listHas(mPressedKeys, key)) {
+                // if key not a press
                 mTappedKeys.push_back(key); // is now a tap
+                mPressedKeys.push_back(key);    // is now a press
             }
         } else {    // key is not being pressed
             if (listHas(mTappedKeys, key)) {

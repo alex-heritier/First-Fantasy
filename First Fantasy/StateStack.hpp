@@ -23,9 +23,9 @@ namespace ff {
     class StateStack {
     public:
         StateStack(sf::RenderWindow &, ResourceManager &, std::string);
-        void change(std::string);
-        void swap(std::string);
-        void end();
+        void change(std::string, void *, std::string = "");
+        void swap(std::string, std::string = "");
+        void end(std::string = "");
         State &top();
     private:
         // variables

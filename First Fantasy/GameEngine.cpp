@@ -45,7 +45,7 @@ namespace ff {
     GameEngine::GameEngine():
     mWindow(sf::VideoMode(800, 600), "First Fantasy"),
     mResourceManager(ResourceManager()),
-    mStateStack(StateStack(mWindow, mResourceManager, "splash")),
+    mStateStack(StateStack(mWindow, mResourceManager, "intro")),
     FPS(60)
     {
         mWindow.setIcon(32, 32, mResourceManager.getImage("blackMage").getPixelsPtr());

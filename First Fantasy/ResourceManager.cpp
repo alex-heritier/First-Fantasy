@@ -35,6 +35,9 @@ namespace ff {
         mFonts["introFont"] = sf::Font();
         mFonts["introFont"].loadFromFile(resourcePath() + "sansation.ttf");
         
+        mFonts["dialogFont"] = sf::Font();
+        mFonts["dialogFont"].loadFromFile(resourcePath() + "fixedsys.ttf");
+        
         // load images
         mImages["blackMage"] = sf::Image();
         mImages["blackMage"].loadFromFile(resourcePath() + "black_mage.png");

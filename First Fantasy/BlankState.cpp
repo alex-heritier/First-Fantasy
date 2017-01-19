@@ -18,8 +18,8 @@ namespace ff {
     {
     }
     
-    void BlankState::onEnter() { Logger(LogType::INFO).put("Entering blank state"); }
-    void BlankState::onExit() { Logger(LogType::INFO).put("Exiting blank state"); }
+    void BlankState::onEnter(void *data, std::string message) { Logger(LogType::INFO).put("Entering blank state"); }
+    void BlankState::onExit(std::string message) { Logger(LogType::INFO).put("Exiting blank state"); }
     
     void BlankState::update(unsigned long delta) {}
     

@@ -15,6 +15,8 @@
 		FA280E641DD1728700DBCF90 /* skeletons.png in Resources */ = {isa = PBXBuildFile; fileRef = FA280E601DD1728700DBCF90 /* skeletons.png */; };
 		FA280E651DD1728700DBCF90 /* zelda sprites.png in Resources */ = {isa = PBXBuildFile; fileRef = FA280E611DD1728700DBCF90 /* zelda sprites.png */; };
 		FA280E681DD18B6B00DBCF90 /* KeyboardManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA280E661DD18B6B00DBCF90 /* KeyboardManager.cpp */; };
+		FA280E6B1DD2F90400DBCF90 /* DialogState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA280E691DD2F90400DBCF90 /* DialogState.cpp */; };
+		FA280E6F1DD3199500DBCF90 /* fixedsys.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA280E6E1DD3199500DBCF90 /* fixedsys.ttf */; };
 		FA6AF5081DCBFFF500E258AD /* IntroState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA6AF5061DCBFFF500E258AD /* IntroState.cpp */; };
 		FA6AF50F1DCC13CF00E258AD /* gameboy_start_up.wav in Resources */ = {isa = PBXBuildFile; fileRef = FA6AF50D1DCC13CF00E258AD /* gameboy_start_up.wav */; };
 		FA6AF5101DCC13CF00E258AD /* victory.wav in Resources */ = {isa = PBXBuildFile; fileRef = FA6AF50E1DCC13CF00E258AD /* victory.wav */; };
@@ -48,6 +50,9 @@
 		FA280E611DD1728700DBCF90 /* zelda sprites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zelda sprites.png"; sourceTree = "<group>"; };
 		FA280E661DD18B6B00DBCF90 /* KeyboardManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardManager.cpp; sourceTree = "<group>"; };
 		FA280E671DD18B6B00DBCF90 /* KeyboardManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KeyboardManager.hpp; sourceTree = "<group>"; };
+		FA280E691DD2F90400DBCF90 /* DialogState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DialogState.cpp; sourceTree = "<group>"; };
+		FA280E6A1DD2F90400DBCF90 /* DialogState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DialogState.hpp; sourceTree = "<group>"; };
+		FA280E6E1DD3199500DBCF90 /* fixedsys.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fixedsys.ttf; sourceTree = "<group>"; };
 		FA6AF5061DCBFFF500E258AD /* IntroState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IntroState.cpp; sourceTree = "<group>"; };
 		FA6AF5071DCBFFF500E258AD /* IntroState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IntroState.hpp; sourceTree = "<group>"; };
 		FA6AF50D1DCC13CF00E258AD /* gameboy_start_up.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameboy_start_up.wav; sourceTree = "<group>"; };
@@ -104,6 +109,8 @@
 				FA6AF5071DCBFFF500E258AD /* IntroState.hpp */,
 				FA26F85E1DA9C712001EAB75 /* SplashState.cpp */,
 				FA26F85F1DA9C712001EAB75 /* SplashState.hpp */,
+				FA280E691DD2F90400DBCF90 /* DialogState.cpp */,
+				FA280E6A1DD2F90400DBCF90 /* DialogState.hpp */,
 				FAEFEBF01DCABF64002A99CC /* BlankState.cpp */,
 				FAEFEBF11DCABF64002A99CC /* BlankState.hpp */,
 				FABB3B591DA87134009E1CFF /* State.cpp */,
@@ -172,6 +179,7 @@
 			children = (
 				FAEFEBF51DCAC43A002A99CC /* main_menu.jpg */,
 				FA6AF50D1DCC13CF00E258AD /* gameboy_start_up.wav */,
+				FA280E6E1DD3199500DBCF90 /* fixedsys.ttf */,
 				FA280E5E1DD1728700DBCF90 /* ff_sprite_sheet.png */,
 				FA280E5F1DD1728700DBCF90 /* map_tiles.png */,
 				FA280E601DD1728700DBCF90 /* skeletons.png */,
@@ -253,6 +261,7 @@
 				FAEFEBF81DCAC43A002A99CC /* world_map.jpg in Resources */,
 				FAEFEBF71DCAC43A002A99CC /* main_menu.jpg in Resources */,
 				FA280E651DD1728700DBCF90 /* zelda sprites.png in Resources */,
+				FA280E6F1DD3199500DBCF90 /* fixedsys.ttf in Resources */,
 				FA90C5451DA0C72A00096236 /* sansation.ttf in Resources */,
 				FA90C5431DA0C72A00096236 /* nice_music.ogg in Resources */,
 				FA90C5411DA0C72A00096236 /* cute_image.jpg in Resources */,
@@ -292,6 +301,7 @@
 				FAEFEBF21DCABF64002A99CC /* BlankState.cpp in Sources */,
 				FA26F8601DA9C712001EAB75 /* SplashState.cpp in Sources */,
 				FAEFEBEA1DCA9B29002A99CC /* MainMenuState.cpp in Sources */,
+				FA280E6B1DD2F90400DBCF90 /* DialogState.cpp in Sources */,
 				FABB3B5B1DA87134009E1CFF /* State.cpp in Sources */,
 				FA6AF5151DCC8D2600E258AD /* Log.cpp in Sources */,
 				FAEFEBED1DCA9C0F002A99CC /* WorldMapState.cpp in Sources */,

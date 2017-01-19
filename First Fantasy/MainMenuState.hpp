@@ -19,11 +19,10 @@ namespace ff {
     class MainMenuState : public State {
     public:
         MainMenuState(sf::RenderWindow &, ResourceManager &, StateStack &);
-        void onEnter();
+        void onEnter(void *);
         void onExit();
         void update(unsigned long);
         void display();
-        
     };
 }
 

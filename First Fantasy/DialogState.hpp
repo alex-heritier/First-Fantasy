@@ -1,36 +1,35 @@
 //
-//  IntroState.hpp
+//  DialogState.hpp
 //  First Fantasy
 //
-//  Created by Alex on 11/3/16.
+//  Created by Alex on 11/8/16.
 //  Copyright © 2016 Alex Heritier. All rights reserved.
 //
 
-#ifndef IntroState_hpp
-#define IntroState_hpp
+#ifndef DialogState_hpp
+#define DialogState_hpp
 
 #include <SFML/Graphics.hpp>
 
+#include <iostream>
+#include <vector>
+
 #include "ResourceManager.hpp"
-#include "State.hpp"
 #include "StateStack.hpp"
+#include "State.hpp"
 
 namespace ff {
-    class IntroState : public State {
+    class DialogState : public State {
     public:
-        IntroState(sf::RenderWindow &, ResourceManager &, StateStack &);
+        DialogState(sf::RenderWindow &, ResourceManager &, StateStack &);
         void onEnter(void *, std::string = "");
         void onExit(std::string = "");
         void update(unsigned long);
         void display();
     private:
-        // variables
-        sf::Music mMainTheme;
-        sf::Sprite mSprite;
-        int mX;
-        int mY;
+        const int mMaxLineLength;
+        std::string mText;
     };
 }
 
-
-#endif /* IntroState_hpp */
+#endif /* DialogState_hpp */

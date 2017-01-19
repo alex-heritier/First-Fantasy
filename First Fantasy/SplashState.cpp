@@ -21,7 +21,7 @@ namespace ff {
     State(window, resourceManager, stateStack)
     {}
     
-    void SplashState::onEnter()
+    void SplashState::onEnter(void *data, std::string message)
     {
         Logger(LogType::INFO).put("Entering splash state");
         
@@ -29,7 +29,7 @@ namespace ff {
         mStartupSound.play();
     }
     
-    void SplashState::onExit()
+    void SplashState::onExit(std::string message)
     {
         Logger(LogType::INFO).put("Exiting splash state");
         

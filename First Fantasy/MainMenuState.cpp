@@ -16,7 +16,7 @@ namespace ff {
     State(window, resourceManager, stateStack)
     {}
     
-    void MainMenuState::onEnter()
+    void MainMenuState::onEnter(void *data)
     {
         Logger(LogType::INFO).put("Entering main menu state");
     }

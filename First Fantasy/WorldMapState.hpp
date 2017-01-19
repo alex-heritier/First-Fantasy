@@ -19,7 +19,7 @@ namespace ff {
     class WorldMapState : public State {
     public:
         WorldMapState(sf::RenderWindow &, ResourceManager &, StateStack &);
-        void onEnter();
+        void onEnter(void *);
         void onExit();
         void update(unsigned long);
         void display();
